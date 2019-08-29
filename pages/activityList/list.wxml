@@ -1,0 +1,84 @@
+<!--pages/productOrder/list/list.wxml-->
+
+<view  wx:if="{{eventList}}" class="weui-tab">
+
+    <!-- <view class="weui-navbar {{menuFixed ? 'fixed': ''}} "  id="affix" >
+        <block wx:for="{{tabs}}" wx:key="*this">
+            <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                <view class="weui-navbar__title">{{item}}</view>
+            </view>
+        </block>
+        <view class="weui-navbar__slider" style="width:{{sliderWidth}}px;background-color: rgb(40, 117, 180);left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+    </view> -->
+
+
+    <!-- <view class="wlt1"   >测试滑动卡顿问题</view> -->
+<!-- <view  wx:if="{{menuFixed==true}}"  class="wlt"  id="affix" >测试滑动卡顿问题</view> -->
+   
+
+
+
+
+
+ 
+        <!-- <view class="weui-tab__content" hidden="{{activeIndex != 0}}">选项一的内容</view>
+                <view class="weui-tab__content" hidden="{{activeIndex != 1}}">选项二的内容</view> -->
+        <view class="weui-tab__content">
+            <view class='order-empty' wx:if="{{eventList.length==0&&activeIndex==1}}">
+                <image src='/image/general/noevent.png'></image>
+                <view>您还没有参加任何活动哦...赶快参加吧！</view>
+            </view>
+           <navigator  wx:for="{{eventList}}"  class=" {{index==eventList.length-1?'order-item-noborder':'order-item'}}"  wx:key="uuid" url='/pages/eventDetails/eventDetails?uuid={{item.uuid}}'>
+    <view class='item-upper' hover-class='none'  data-uuid="{{item.uuid}}" data-state = "{{item.state}}" data-productId = "{{item.productId}}"  data-venueId="{{item.venueId}}" >
+        <image  mode="widthFix" class='event-img' src="{{item.acrossImg}}"></image>
+     
+
+         <!-- <view wx:if="{{item.joinState=='JOIN'}}" class='event-signUp'>已报名</view>
+            <view wx:if="{{item.joinState=='UNJOIN'}}" class='event-signUp'>未报名</view>
+            <view wx:if="{{item.joinState=='UNSELECTED'}}" class='event-signUp'>未入选</view>
+             <view wx:if="{{item.joinState=='SELECTED'}}"  style='background-color:rgb(232, 77, 85)' class='event-signUp'>已入选</view> -->
+        
+    </view>
+    <view   class='item-content'   >
+
+           <view class='item-title'><text style="{{item.state=='NOW'?'color:#0F6BAF;':'color:#999999;'}}">{{item.state=='NOW'?"【正在报名】":"【报名结束】"}}</text>{{item.title}}</view>
+
+            <view class='center-item'>
+               <view class='item-count-view'> <view class='item-count'>{{item.count==null?0:item.count}}</view>人已报名</view>
+   
+            </view>
+
+    <view class='bottom-item'>
+             <view class='item-time'>举办地点：{{item.address}}</view>
+           <!-- <view class='action_red' wx:if="{{item.state=='END'}}">    
+            活动已结束 
+            </view>
+    <view class='action' wx:if="{{item.state=='NOW'}}">
+            报名进行中 
+    </view> -->
+            </view>
+
+                <view class='bottom-item'>
+             <view class='item-time'>活动时间：{{item.activityStartTime+'~'+item.activityEndTime}}</view>
+ 
+            </view>
+
+        
+         
+           
+         
+          
+          
+      
+       
+    </view>
+</navigator>
+        </view>
+ </view>
+
+
+<view class='authorization' wx:if="{{loginCalled==true}}" catchtouchmove='true'>
+<image  mode="aspectFill" src='/image/general/autro.png'></image>
+<view>还没有得到您的授权…暂时无法查看详细内容哦！ </view>
+<button   class='authorbtn' open-type='getUserInfo'  bindgetuserinfo="onGotUserInfo" >获取授权</button>
+</view>

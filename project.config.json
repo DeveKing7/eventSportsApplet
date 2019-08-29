@@ -1,0 +1,155 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"nodeModules": false,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.0.0",
+	"appid": "wxcb8bb7ba9fd940aa",
+	"projectname": "EventSportsApplet",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 13,
+			"list": [
+				{
+					"id": -1,
+					"name": "活动",
+					"pathName": "pages/activityList/list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "报名",
+					"pathName": "pages/toSignUp/toSignUp",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "活动详情",
+					"pathName": "pages/eventDetails/eventDetails",
+					"query": "uuid=z14d9aqeyb",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "投票列表",
+					"pathName": "pages/voteList/voteList",
+					"query": "uuid=gugzf7zbsf",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "投票详情",
+					"pathName": "pages/voteDetail/voteDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "赛事报名",
+					"pathName": "pages/toSignUp/CompetitionSignUp",
+					"query": "groupId=qm1d5vceu5&isTeam=1",
+					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "赛事分组",
+					"pathName": "pages/toSignUp/CompetitionGroup",
+					"query": "uuid=qlc2adnb63",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/user/user",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "订单列表",
+					"pathName": "pages/orderList/orderList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "报名结果列表",
+					"pathName": "pages/resultList/resultList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/EventAssistant/EventResult/resultIndex",
+					"pathName": "pages/EventAssistant/EventResult/resultIndex",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/EventAssistant/EventPackage/signature",
+					"pathName": "pages/EventAssistant/EventPackage/signature",
+					"query": "签名",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "证书",
+					"pathName": "pages/EventAssistant/EventResult/certIndex",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "订单详情",
+					"pathName": "pages/orderDetail/orderDetail",
+					"query": "uuid=iu7c4wxa3l&activityId=1errbehv5c",
+					"scene": null
+				}
+			]
+		}
+	}
+}

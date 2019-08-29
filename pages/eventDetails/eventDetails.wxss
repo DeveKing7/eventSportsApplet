@@ -1,0 +1,339 @@
+/* pages/productOrder/list/list.wxss */
+
+page {
+    background-color: #fff;
+}
+
+.weui-navbar {
+    background: #fff;
+    color:#959595;
+    border-bottom:0rpx;
+     font-size: 32rpx;
+    
+}
+ 
+.weui-navbar__item.weui-bar__item_on {
+    color:#333333;
+    font-weight: bold;
+  
+   
+}
+
+.weui-navbar__title_selecetd{
+
+ font-size: 35rpx;
+ 
+  
+}
+.weui-navbar__title{
+
+   font-size: 32rpx;
+}
+
+
+.weui-tab {
+  position: sticky;
+     top: -2rpx; 
+ 
+}
+.item-upper {
+ 
+    display: flex;
+  
+    flex-direction: row-reverse;
+
+    align-content: flex-end;
+     
+ 
+   
+    font-size: 32rpx;
+ 
+
+   
+}
+.event-img{
+
+height: 280rpx;
+width: 100%;
+ 
+ 
+ 
+  
+
+}
+.event-signUp{
+
+ 
+position: absolute;
+
+margin-top: 10rpx;
+margin-left: -10rpx;
+width: 150rpx;
+height: 113rpx;
+
+
+}
+.order-empty{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: #8d8d8d;
+}
+.order-empty image{
+	width: 345rpx;
+	height: 293rpx;
+	margin: 250rpx 0rpx 50rpx;
+}
+
+.order-item {
+    background-color: #fff;
+  
+    
+    color: #555;
+    
+  
+ 
+ 
+}
+.icon{
+ 
+
+ width: 32rpx;
+ height: 32rpx;
+margin-right: 20rpx;
+   flex-shrink: 0;
+
+
+ 
+
+}
+.item-image {
+    width: 80rpx;
+    height: 80rpx;
+    flex-shrink: 0;
+    margin-right: 20rpx;
+}
+
+ 
+
+.item-title {
+   
+    font-size: 36rpx;
+    color: #000;
+  word-break: break-all;
+ 
+   
+
+}
+.item{
+
+width: 100%;
+ 
+ border-bottom: 2rpx solid #DCDCDC;
+ 
+
+}
+.item-top{
+
+ 
+display: flex;
+width: 100%;
+flex-direction: row;
+align-items: center;
+align-content: center;
+ justify-content: space-between;
+ height: 120rpx;
+ border-bottom: 2rpx solid #DCDCDC;
+
+}
+.item-count-view{
+
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+
+}
+.item-count {
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  font-family: "HYk2gj";
+  font-size: 60rpx;
+  color:#0F6BAF;
+
+}
+.signUp-Join{
+
+background-color: #0F6BAF;
+color: white;
+font-size: 30rpx;
+width: 130rpx;
+height: 38rpx;
+line-height: 38rpx;
+text-align: center;
+
+}
+.signUp-unJoin{
+
+background-color: #0F6BAF;
+color: white;
+font-size: 30rpx;
+width: 130rpx;
+height: 45rpx;
+line-height: 45rpx;
+text-align: center;
+border-radius: 20rpx;
+
+}
+.item-center-bottom{
+
+
+ 
+margin: 30rpx 0rpx 30rpx;
+ 
+
+
+
+}
+.item-sub {
+ 
+    font-size: 30rpx;
+      word-break: break-all;
+      line-height: 70rpx;
+   display: flex;
+   color:#000;
+   align-items: center;
+
+   
+}
+
+ 
+
+.state {
+    font-size: 24rpx;
+}
+
+ 
+ 
+
+ 
+.venue-link{
+    width: 100%;
+}
+.item-state{
+    flex-shrink: 0;
+}
+
+.item-content {
+	display: flex;
+  align-items: center;
+  justify-content: space-between;
+    font-size: 28rpx;
+    padding: 30rpx 30rpx 20rpx;
+    
+     
+}
+
+ 
+ 
+
+
+.item-action{
+
+	display: flex;
+ 
+ 
+  height: 70rpx;
+   
+}
+.action{
+	font-size: 26rpx;
+	text-align: center;
+	width: 160rpx;
+
+ 
+    background:rgb(228, 158, 98);
+    color: white;
+	border-radius: 10rpx;
+
+ line-height: 70rpx;
+ 
+ 
+ 
+   
+}
+
+.action-primary-border {
+	border: 1rpx solid #0F6BAF;
+}
+
+.action-margin{
+	margin-right: 20rpx;
+}
+.content-view{
+  margin-top: 140rpx;
+ 
+
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+    font-size: 28rpx;
+      word-break: break-all;
+      color: #7f7f7f;
+      margin-bottom: 30rpx;
+ 
+ line-height: 50rpx;
+
+}
+.section{
+
+height: 20rpx;
+background-color: #eee;
+
+}
+.detail-ft {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    z-index: 999;
+  
+flex-direction:row;
+    background: #fff;
+}
+.detail-btn  {
+    height: 120rpx;
+    line-height: 120rpx;
+    /* background: linear-gradient(#ff8c00, #fe6500); */
+    font-size: 35rpx;
+      /* background-color: rgb(43, 120, 183) !important; */
+    color: #fff;
+    border-radius: 0;
+    flex-grow: 1;
+}
+ .category-list {
+   width: 100%;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+   
+	}
+
+	.category-list-item {
+    	display: flex;
+		flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+		flex-shrink: 0;
+		width: 145rpx;
+		font-size: 30rpx;
+		text-align: center;
+		margin: 40rpx;
+  
+	}
+
+	.category-item-logo {
+		width: 80rpx;
+		height: 80rpx;
+    margin-bottom: 10rpx;
+	}

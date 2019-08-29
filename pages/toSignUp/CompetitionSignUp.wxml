@@ -1,0 +1,370 @@
+ 
+
+
+
+<form   class='auth' bindsubmit="submitAuth" report-submit >
+
+<view wx:for="{{sigupList}}"    wx:key="property">
+
+  <view class='section-header'>请填写本人的真实信息</view>
+    <view class="weui-cells weui-cells_after-title">
+
+   
+
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">真实姓名</view>
+            </view>
+            <view class="weui-cell__bd">
+             <input wx:if="{{userMap.name&&userMap.name.length>0}}"  disabled='true'   class="weui-input" type='text' name="{{'name'+index}}" value="{{userMap.name}}" placeholder="请输入您的真实姓名" />
+                <input  wx:else class="weui-input" type='text' name="{{'name'+index}}" value="{{userMap.name}}" placeholder="请输入您的真实姓名" />
+            </view>
+        </view>
+
+   <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">证件类型</view>
+            </view>
+       
+                <picker wx:if="{{userMap.name&&userMap.name.length>0}}"  disabled='true'   bindchange="changeIdcard"  value="{{idcardIndex}}" range="{{idcardList}}">
+                     <view class="tui-picker-detail-idcard">{{idcardIndex==-1?'请选择证件类型':idcardList[idcardIndex]}}</view>
+    
+         
+              </picker>
+
+                <picker wx:else    bindchange="changeIdcard"  value="{{idcardIndex}}" range="{{idcardList}}">
+            
+          <view class="tui-picker-detail-idcard">{{idcardIndex==-1?'请选择证件类型':idcardList[idcardIndex]}}</view>
+    
+         
+              </picker>
+            
+        </view>
+
+
+ 
+
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">证件号码</view>
+            </view>
+            <view class="weui-cell__bd">
+
+   <input   wx:if="{{userMap.idCard&&userMap.idCard.length>0}}"  disabled='true' class="weui-input" type='idcard' name="{{'cardNumber'+index}}" value="{{userMap.idCard}}" placeholder="请输入您的证件号码" />
+
+
+                <input wx:else class="weui-input" type='idcard' name="{{'cardNumber'+index}}" value="{{userMap.idCard}}" placeholder="请输入您的证件号码" />
+
+            </view>
+        </view>
+
+        <view class="weui-cell weui-cell_input" wx:if="{{idcardIndex!=0}}">
+            <view class="weui-cell__hd">
+                <view class="weui-label">性别</view>
+            </view>
+       
+        <picker  wx:if="{{userMap.idCard&&userMap.idCard.length>0}}"  disabled='true' bindchange="changeSex"  value="{{sexIndex}}" range="{{sexList}}">
+            
+          <view class="tui-picker-detail-idcard">{{sexIndex==-1?'请选择性别':sexList[sexIndex]}}</view>
+    
+         
+              </picker>
+
+                <picker wx:else bindchange="changeSex"  value="{{sexIndex}}" range="{{sexList}}">
+            
+          <view class="tui-picker-detail-idcard">{{sexIndex==-1?'请选择性别':sexList[sexIndex]}}</view>
+    
+         
+              </picker>
+            
+        </view>
+
+        <view class="weui-cell weui-cell_input" wx:if="{{idcardIndex!=0}}">
+            <view class="weui-cell__hd">
+                <view class="weui-label">年龄</view>
+            </view>
+             <picker  wx:if="{{userMap.idCard&&userMap.idCard.length>0}}"  disabled='true'  mode="date" value="{{date}}" start="{{groupInfo.ageMax}}" end="{{groupInfo.ageMin}}" bindchange="bindDateChange">
+            
+          <view class="tui-picker-detail-idcard">{{date}}</view>
+    
+         
+              </picker>
+
+             <picker wx:else mode="date" value="{{date}}" start="{{groupInfo.ageMax}}" end="{{groupInfo.ageMin}}" bindchange="bindDateChange">
+            
+          <view class="tui-picker-detail-idcard">{{date}}</view>
+    
+         
+              </picker>
+        </view>
+
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">手机号码</view>
+            </view>
+            <view class="weui-cell__bd">
+
+ <input  wx:if="{{userMap.phone&&userMap.phone.length>0}}"  disabled='true'  class="weui-input" type='number' name="{{'phone'+index}}" value="{{userMap.phone}}" placeholder="请输入您的手机号"  bindinput='phoneInput' />
+
+                <input wx:else class="weui-input" type='number' name="{{'phone'+index}}" value="{{userMap.phone}}" placeholder="请输入您的手机号"  bindinput='phoneInput' />
+
+            </view>
+        </view>
+
+        <view  wx:if="{{!userMap.phone||userMap.phone.length<=0}}"  class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">验证码</view>
+            </view>
+            <view class="weui-cell__bd">
+
+                <input class="weui-input" type='number' name="{{'code'+index}}" bindinput='codeInput' bindtap='codeClick' placeholder="请输入验证码" />
+
+            </view>
+
+
+            <view class='code-btn' bindtap='beginSmsTimer' wx:if='{{!smsBtnClicked}}'>获取验证码</view>
+            <view class='code-btn' wx:if='{{smsBtnClicked}}'>{{smsTimerCount}}s 后重试</view>
+        </view>
+
+    </view>
+
+ <view wx:if="{{groupInfo.needPhoto==true}}">
+
+    <view class='section-header'>上传形象照片</view>
+    <view class='photo-view'>
+     <image wx:if='{{photo[index]}}' data-index='{{index}}' class='photo-img' mode='aspectFill' bindtap='click_photo' src='{{photo[index]}}'></image>
+    <image wx:else class='photo-img' data-index='{{index}}'  mode='widthFix' bindtap='click_photo' src='/image/general/camera.png'></image>
+    <view class='dec-text'>请上传自己真实的照片,否则会取消您的参赛资格</view>
+   
+    </view>
+
+    </view>
+
+   <view wx:if="{{groupInfo.needHealCert==true}}">
+
+    <view class='section-header'>上传健康证明</view>
+    <view class='photo-view'>
+     <image wx:if='{{HealCert[index]}}' data-index='{{index}}' class='photo-img' mode='aspectFill' bindtap='click_HealCert' src='{{HealCert[index]}}'></image>
+    <image wx:else class='photo-img' data-index='{{index}}'  mode='widthFix' bindtap='click_HealCert' src='/image/general/camera.png'></image>
+    <view class='dec-text'>请如实上传相关证明,否则会取消您的参赛资格</view>
+   
+    </view>
+
+    </view>
+
+
+      <view wx:if="{{groupInfo.needFinishCert==true}}">
+
+    <view class='section-header'>上传完赛证书（选填）</view>
+    <view class='photo-view'>
+     <image wx:if='{{FinishCert[index]}}' data-index='{{index}}' class='photo-img' mode='aspectFill' bindtap='click_FinishCert' src='{{FinishCert[index]}}'></image>
+    <image wx:else class='photo-img' data-index='{{index}}'  mode='widthFix' bindtap='click_FinishCert' src='/image/general/camera.png'></image>
+    <view class='dec-text'>请如实上传相关证明,否则会取消您的参赛资格</view>
+   
+    </view>
+
+    </view>
+
+
+         
+
+<view wx:if="{{groupInfo.needSize==true}}">
+ <view  class='section-header'>衣服尺码</view>
+        <view class="wlt-cell">
+        
+                <view class="weui-label">尺码</view>
+            
+             <picker bindchange="changeAdultSize"  value="{{adultSizeIndex}}" range="{{adultSizeList}}">
+            
+          <view class="tui-picker-detail">{{adultSizeIndex==-1?'请选择尺码':adultSizeList[adultSizeIndex]}}</view>
+    
+         
+              </picker>
+        </view>
+
+   
+       </view>
+
+
+
+    <view wx:if="{{groupInfo.carFare>0}}">
+
+    <view class='section-header'>
+    
+    <view class='cartext'>是否用车：</view>
+    <view class='carBtnView'>
+
+    <view class="{{on_car[index]==1?'onCar-selected':'onCar-normal'}}" data-index='{{index}}' bindtap='on_car'>
+    <view class="{{on_car[index]==1?'diamonds-selected':'diamonds-normal'}} "></view>
+    <view>是</view>
+    </view>
+    
+     <view class="{{on_car[index]!=1?'onCar-selected':'onCar-normal'}}" data-index='{{index}}'  bindtap='on_car'>
+    <view  class="{{on_car[index]!=1?'diamonds-selected':'diamonds-normal'}} "></view>
+    <view>否</view>
+    </view>
+
+    </view>
+    
+    </view>
+ </view>
+   
+
+   <view class='section-header' style='border-top: 1rpx solid white;'>支付费用</view>
+    <view class="weui-cells weui-cells_after-title">
+
+   
+
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">报名费</view>
+            </view>
+            <view class="weui-cell__bd">
+               <input class="weui-input"  disabled='false' type='text' style=' text-align: right;color:rgb(43, 120, 183);' name="{{'price'+index}}" value="{{groupInfo.price+groupInfo.premium}}元"/>
+    
+            </view>
+        </view>
+
+  <view wx:if="{{groupInfo.deposit>0}}" class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">押金</view>
+            </view>
+            <view class="weui-cell__bd">
+               <input class="weui-input"  disabled='false' type='text' style=' text-align: right;color:rgb(43, 120, 183);' name="{{'price'+index}}" value="{{groupInfo.deposit}}元"/>
+    
+            </view>
+        </view>
+
+        <view wx:if="{{groupInfo.carFare>0&&on_car[index]==1}}" class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">车费</view>
+            </view>
+            <view class="weui-cell__bd">
+
+            <input class="weui-input"  disabled='false' type='text' style=' text-align: right;color:rgb(43, 120, 183);' name="{{'price'+index}}" value="{{groupInfo.carFare}}元"/>
+
+            </view>
+        </view>
+
+    
+ </view>
+
+
+<view wx:if='{{groupInfo.needLinkman==true}}'>
+ <view class='section-header'>紧急联系人</view>
+    <view class="weui-cells weui-cells_after-title">
+
+   
+
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">真实姓名</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" type='text' name="{{'urgencyName'+index}}" value="{{userMap.linkmanName}}" placeholder="请输入紧急联系人真实姓名" />
+            </view>
+        </view>
+
+
+   
+
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">手机号码</view>
+            </view>
+            <view class="weui-cell__bd">
+
+                <input class="weui-input" type='number' name="{{'urgencyPhone'+index}}" value="{{userMap.linkmanPhone}}" placeholder="请输入紧急联系人的手机号"    />
+
+            </view>
+        </view>
+
+        <!-- <view  wx:if="{{groupInfo.needLinkmanCheck=='true'}}" class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">验证码</view>
+            </view>
+            <view class="weui-cell__bd">
+
+                <input class="weui-input" type='number' name="{{'urgencyCode'+index}}" bindinput='codeInput' bindtap='codeClick' placeholder="请输入验证码" />
+
+            </view>
+
+
+            <view class='code-btn' bindtap='beginSmsTimer' wx:if='{{!smsBtnClicked}}'>获取验证码</view>
+            <view class='code-btn' wx:if='{{smsBtnClicked}}'>{{smsTimerCount}}s 后重试</view>
+        </view> -->
+
+    </view>
+    
+
+
+
+
+
+
+    </view>
+      <!-- <view class='section-header'>报名费用</view>
+        <view class='form-pair'>
+            <view>报名费用：</view>
+
+
+            <view class='primary-color'>0.1元</view>
+        </view>
+          <view class='form-pair'>
+            <view>车费费用</view>
+
+
+            <view class='primary-color'>0.1元</view>
+        </view> -->
+
+  <view   style="padding:60rpx"></view>
+    <view  wx:if="{{groupInfo.price>0}}"class="detail-ft">
+   
+          
+            <view class="weui-left">
+              总支付金额:{{totalMoney}}元 
+    
+            </view>
+      
+        <button class='detail-btn primary-color-background' form-type="submit">确认报名</button>
+   
+</view>
+</view>
+</form>
+
+ 
+  <view  wx:if="{{is_detail}}" class='background-view'   catchtouchmove='notouch'>
+</view>
+ 
+<view wx:if="{{is_detail}}"  class='scroll-view'   catchtouchmove='notouch' >
+<scroll-view     scroll-y='true' class='scroll'    catchtouchmove='notouch'>
+
+<view class='detail-title'>
+免责声明
+</view>
+<rich-text class='detail-text' nodes="{{groupInfo.disclaimer}}" space="nbsp">
+ </rich-text>
+
+ 
+ <view class='agree'> 
+ <image wx:if="{{is_agree==false}}" mode="aspectFill" class='agree_icon' bindtap='click_agree_icon' src='/image/general/BAI-fuxuankuang.png'>
+    </image>
+    <image wx:if="{{is_agree==true}}"  mode="aspectFill" class='agree_icon' bindtap='click_agree_icon' src='/image/general/BAI-fuxuankuangs.png'>
+    </image>
+<view class='agree_text' bindtap='click_agree_icon'>本人已认真阅读并对上述内容承担法律责任</view>
+
+    
+
+
+
+
+
+</view>
+
+</scroll-view>
+
+
+ <view  wx:if="{{is_agree}}"  class='agree_btn' bindtap='click_agree' >确定
+    </view>
+    </view>
+    

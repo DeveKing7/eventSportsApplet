@@ -1,0 +1,108 @@
+<!--pages/productOrder/list/list.wxml-->
+
+<view wx:if="{{eventList}}" class="weui-tab">
+
+  <view class="weui-navbar {{menuFixed ? 'fixed': ''}} " id="affix">
+    <block wx:for="{{tabs}}" wx:key="*this">
+      <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+        <view class="weui-navbar__title">{{item}}</view>
+      </view>
+    </block>
+    <view class="weui-navbar__slider" style="width:{{sliderWidth}}px;background-color: rgb(40, 117, 180);left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+  </view>
+
+
+  <!-- <view class="wlt1"   >测试滑动卡顿问题</view> -->
+  <!-- <view  wx:if="{{menuFixed==true}}"  class="wlt"  id="affix" >测试滑动卡顿问题</view> -->
+
+
+
+
+
+
+
+  <!-- <view class="weui-tab__content" hidden="{{activeIndex != 0}}">选项一的内容</view>
+                <view class="weui-tab__content" hidden="{{activeIndex != 1}}">选项二的内容</view> -->
+  <view class="weui-tab__content">
+    <view class='order-empty' wx:if="{{eventList.length==0}}">
+      <image src='/image/general/noevent.png'></image>
+      <view>您还没有任何活动哦...赶快参加吧！</view>
+    </view>
+    <navigator wx:for="{{eventList}}" class=" order-item" wx:key="uuid" url='/pages/orderDetail/orderDetail?uuid={{item.uuid}}&activityId={{item.activityId}}'>
+      <view class='item-upper' hover-class='none' data-uuid="{{item.uuid}}" data-state="{{item.state}}" data-productId="{{item.productId}}" data-venueId="{{item.venueId}}">
+        <image mode='aspectFill' class='event-img' src="{{item.acrossImg+'_120'}}"></image>
+
+
+        <view class='item-content'>
+
+          <view class='item-title'>{{item.activityTitle}}</view>
+          <view wx:if="{{item.activityType=='COMPETITION'}}" class='item-group'>组别：{{item.groupName}}</view>
+          <view wx:if="{{item.activityType=='EXPERIENCE'}}" class='item-group'>区域：{{item.area}}</view>
+          <view wx:if="{{item.activityType=='COMPETITION'}}" class='center-item'>
+            <view class='item-text'>报名费：{{item.signPrice*item.count+item.childSignPrice*item.childNumber}}</view>
+            <view wx:if="{{item.deposit>0}}" class='item-text'>押金：{{item.deposit*item.count}}</view>
+            <view wx:if="{{item.carFare>0}}" class='item-text'>车费：{{item.carFare*item.byCarNumber}}</view>
+          </view>
+
+
+
+
+        </view>
+      </view>
+      <view wx:if="{{item.activityType=='COMPETITION'}}" class='bottom-item'>
+        <view class='item-time'>合计：¥{{item.totalPrice}}</view>
+        <view class='button-item' wx:if="{{item.state=='TOPAY'}}">
+          <view class='action_red' data-uuid='{{item.uuid}}' catchtap='clickCancel'>
+            取消订单
+          </view>
+          <view class='action' data-uuid='{{item.uuid}}' data-activityId='{{item.activityId}}' catchtap='clickTopay'>
+            支付订单
+          </view>
+        </view>
+
+        <!-- <view class='button-item' wx:if="{{item.state=='PAYED'}}">
+          <view class='action_red' data-uuid='{{item.uuid}}' catchtap='clickCancel'>
+            取消订单
+          </view>
+             <view wx:if="{{!item.url}}" class='action' data-uuid='{{item.uuid}}' catchtap='eventAssistant'>
+              确认函
+          </view>
+        </view> -->
+
+        <view class='button-item' wx:if="{{item.state=='REFUND'}}">
+
+          <navigator url='/pages/orderDetail/orderDetail?uuid={{item.uuid}}' catchtap="true"  class='action'>
+            退款详情
+          </navigator>
+        </view>
+
+
+      </view>
+
+ 
+       <view wx:if="{{item.activityType=='EXPERIENCE'&&item.score==true}}" class='bottom-item'>
+  
+
+        <view style="margin-top:25rpx;" class='button-item'>
+
+          <navigator url='/pages/EventAssistant/EventResult/ExperienceCert?uuid={{item.activityId}}' catchtap="true" class='action'>
+            成绩查询
+          </navigator>
+        </view>
+
+
+      </view>
+
+ 
+
+    </navigator>
+
+  </view>
+</view>
+
+
+<view class='authorization' wx:if="{{loginCalled==true}}" catchtouchmove='true'>
+  <image mode="aspectFill" src='/image/general/autro.png'></image>
+  <view>还没有得到您的授权…暂时无法查看详细内容哦！ </view>
+  <button class='authorbtn' open-type='getUserInfo' bindgetuserinfo="onGotUserInfo">获取授权</button>
+</view>

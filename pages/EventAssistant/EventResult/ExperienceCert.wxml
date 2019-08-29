@@ -1,0 +1,64 @@
+ 
+
+<view class='section-header'>成绩查询</view>
+ 
+<form class="{{is_detail?'auth':''}}" bindsubmit="submitAuth" report-submit >
+
+    <view class="weui-cells weui-cells_after-title">
+
+ 
+    <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">活动类型</view>
+            </view>
+       
+       
+
+                <picker   bindchange="changeType"  value="{{typeIndex}}" range="{{typeList}}">
+            
+          <view class="tui-picker-detail-idcard">{{typeIndex==-1?'请选择':typeList[typeIndex]}}</view>
+    
+         
+              </picker>
+            
+        </view>
+
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">姓名</view>
+            </view>
+            <view class="weui-cell__bd">
+           
+                             <input   class="weui-input" type='text' name="name" value="{{userMap.name}}" placeholder="请输入姓名" />
+            </view>
+        </view>
+
+
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">编号</view>
+            </view>
+            <view class="weui-cell__bd">
+    
+    
+                <input   class="weui-input"   name="code" value="{{userMap.idCard}}" placeholder="请输入证件号/参赛号" />
+
+            </view>
+        </view>
+
+       
+ 
+  </view>
+    <view style="padding:120rpx"></view>
+    <view class="detail-ft">
+        <button class='detail-btn primary-color-background' form-type="submit">查询</button>
+    </view>
+</form>
+ 
+
+
+ 
+ 
+ 
+ 
+    

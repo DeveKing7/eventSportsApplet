@@ -1,0 +1,35 @@
+<!--pages/map/index.wxml-->
+<map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="{{scale}}"  show-location="true" show-scale="true"
+  bindcontroltap="controltap" enable-satellite="{{satellite}}" bindmarkertap="markertap" markers="{{markers}}" polyline="{{polyline}}"
+  bindregionchange="regionchange"  show-location = "true" style="width: 100%; height:{{height}}px; " ></map>
+
+<cover-view class="map-control-container"  >
+  <cover-view class="control-item" bindtap="enlargeMap" >
+  <cover-image class="image" src="/image/icon-plus.png"></cover-image>
+  </cover-view>
+   <cover-view class="control-item" bindtap="reduceMap" >
+  <cover-image class="image" src="/image/icon-subtract.png"></cover-image>
+  </cover-view>
+     <cover-view class="control-item" bindtap="switchSatellite">
+  <cover-image class="image" src="/image/icon-satellite.png"></cover-image>
+  <cover-view>卫星图</cover-view>
+  </cover-view>
+       <cover-view class="control-item" bindtap="locate2Me">
+  <cover-image class="image" src="/image/icon-locate.png"></cover-image>
+  <cover-view>位置</cover-view>
+  </cover-view>
+</cover-view>
+<cover-view class="match">
+  <cover-view wx:for="{{matches}}" >
+  <cover-view class="control-item">  {{item.name}}</cover-view>
+
+  </cover-view>
+</cover-view>
+
+
+ <!-- <view class="bottom">
+    <button  class='cu-btn bg-green shadow sm' bindtap='beginTrack'> 开始 </button>
+    <button  class='cu-btn bg-orange shadow sm' bindtap='pauseTrack'> 暂停 </button>
+    <button  class='cu-btn bg-red shadow sm' bindtap='endTrack'> 结束 </button>
+      <button  class='cu-btn bg-red shadow sm' bindtap='satellite'> 卫星图 </button> 
+  </view> -->

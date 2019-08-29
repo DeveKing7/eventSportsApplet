@@ -1,0 +1,201 @@
+
+<view class='topview' wx:if="{{eventMap.state=='REFUND'}}">
+
+
+<view class='toptitle'>退款成功</view>
+<view>{{eventMap.refundDesc}}</view>
+</view>
+
+<navigator url='/pages/eventDetails/eventDetails?uuid={{eventMap.activityId}}'  class='item-upper' hover-class='none'  data-uuid="{{eventMap.uuid}}" data-state = "{{eventMap.state}}"  >
+        <image  mode='aspectFill' class='event-img' src="{{eventMap.acrossImg+'_120'}}"></image>
+
+
+    <view   class='item-content'>
+
+           <view class='item-title'>{{eventMap.activityTitle}}</view>
+           <view wx:if="{{eventMap.activityType=='COMPETITION'}}" class='item-text'>组别：{{eventMap.groupName}}</view>
+             <view wx:if="{{eventMap.activityType=='EXPERIENCE'}}" class='item-text'>区域：{{eventMap.area}}</view>
+           <block wx:if="{{eventMap.activityType=='COMPETITION'}}">
+              <view class='item-text'>年龄：{{eventMap.ageMinNum+'~'+eventMap.ageMaxNum}}周岁</view>
+                 <view class='item-text'>里程：{{eventMap.distance}}公里</view>
+            </block>
+  
+      
+       
+    </view>
+     </navigator>
+
+
+	<!-- 项目分类 -->
+					<div wx:if="{{eventMap.activityType=='COMPETITION'}}" class='category-list'>
+						<div   wx:for="{{categoryList}}"  wx:key="index">
+							<navigator class='category-list-item' url="{{item.page}}?uuid={{eventMap.activityId}}&h5={{item.h5}}&functionId={{item.uuid}}" hover-class='none'>
+								<image class='category-item-logo' src='{{item.logo}}'></image>
+								<div class='category-item-name'>
+									{{item.functionName}}
+								</div>
+							</navigator>
+						</div>
+					</div>
+
+
+
+    <!-- <view  wx:if="{{eventMap.state!='REFUND'}}"> -->
+    <block wx:if="{{eventMap.activityType=='COMPETITION'}}">
+     <view  class='section-title' >订单信息</view>
+
+     <view class='order-info'>
+     
+     <view class='cell-title'>总支付费用 </view>
+     <view class='cell-text-blue'>¥{{eventMap.totalPrice}}</view>
+     
+     </view>
+
+
+     <view class='order-info'>
+     
+     <view class='cell-title'>报名费用 </view>
+     <view class='cell-text'>¥{{(eventMap.signPrice+eventMap.premium)*eventMap.count}}</view>
+     
+     </view>
+
+
+<view class='order-info' wx:if="{{eventMap.deposit*eventMap.count!=0}}">
+     
+     <view class='cell-title'>押金 </view>
+     <view class='cell-text'>¥{{eventMap.deposit*eventMap.count}}</view>
+     
+     </view>
+
+
+
+     <view class='order-info' wx:if="{{eventMap.carFare*eventMap.byCarNumber!=0}}">
+     
+     <view class='cell-title'>车费 </view>
+     <view class='cell-text'>¥{{eventMap.carFare*eventMap.byCarNumber}}</view>
+     
+     </view>
+
+
+     <view class='order-info'>
+     
+     <view class='cell-title'>报名状态 </view>
+     <view class='cell-text-blue'>{{eventMap.state=='TOPAY'?'未报名':'已报名'}}</view>
+     
+     </view>
+
+       <view wx:if="{{eventMap.state=='PAYED'}}" class='order-info'>
+     
+     <view class='cell-title'>支付时间</view>
+     <view class='cell-text'>{{eventMap.payTime}}</view>
+     
+     </view>
+         <!-- </view> -->
+
+          <view  wx:if="{{eventMap.state=='REFUND'}}">
+
+ <view class='order-info'>
+     
+     <view class='cell-title'>退款金额 </view>
+     <view class='cell-text-blue'>¥{{eventMap.refund}}</view>
+     
+     </view>
+
+      <view class='order-info'>
+     
+     <view class='cell-title'>退款账户 </view>
+     <view class='cell-text-blue'>微信账户</view>
+     
+     </view>
+
+           </view>
+           </block>
+
+     <view wx:for='{{eventMap.userList}}' wx:key="{{index}}">
+       <view   class='section-title'>报名信息</view>
+
+         <view class='order-info'>
+     
+     <view class='cell-title'>姓名</view>
+     <view class='cell-text'>{{item.name}}</view>
+     
+     </view>
+
+         <view class='order-info'>
+     
+     <view class='cell-title'>证件号码</view>
+     <view class='cell-text'>{{item.idCard}}</view>
+     
+     </view>
+
+         <view class='order-info'>
+     
+     <view class='cell-title'>手机号</view>
+     <view class='cell-text'>{{item.phone}}</view>
+     
+     </view>
+  <block wx:if="{{eventMap.activityType=='COMPETITION'&&item.linkmanName}}">
+         <view  class='order-info'>
+     
+     <view class='cell-title'>紧急联系人</view>
+     <view class='cell-text'>{{item.linkmanName}}</view>
+     
+     </view>
+
+         <view class='order-info'>
+     
+     <view class='cell-title'>联系人电话</view>
+     <view class='cell-text'>{{item.linkmanPhone}}</view>
+     
+     </view>
+     </block>
+
+<view wx:if="{{item.photo}}" class='section-title'>用户照片</view>
+
+
+     <view class='photo-view' wx:if="{{item.photo}}">
+     <image data-index='{{index}}' class='photo-img' mode='aspectFill'  src='{{item.photo}}_120'></image>
+    
+    </view>
+
+
+    <view wx:if="{{item.certHealImg}}" class='section-title'>健康证明</view>
+
+
+     <view class='photo-view' wx:if="{{item.certHealImg}}">
+     <image data-index='{{index}}' class='photo-img' mode='aspectFill'   src='{{item.certHealImg}}_120'></image>
+    
+    </view>
+
+        <view wx:if="{{item.certFinishImg}}" class='section-title'>完赛证明</view>
+
+
+     <view class='photo-view' wx:if="{{item.certFinishImg}}">
+     <image data-index='{{index}}' class='photo-img' mode='aspectFill'   src='{{item.certFinishImg}}_120'></image>
+    
+    </view>
+
+     </view>
+
+<view style='padding:60rpx'> </view>
+     <view  wx:if="{{eventMap.state=='TOPAY'}}"class="detail-ft">
+   
+          
+            <view class="weui-left">
+              总支付金额:{{eventMap.totalPrice}}元 
+    
+            </view>
+      
+        <button class='detail-btn primary-color-background'  data-uuid='{{eventMap.uuid}}' catchtap='clickTopay'>去支付</button>
+   
+</view>
+
+
+    <view   wx:if="{{item.activityType=='EXPERIENCE'&&item.score==true}}" class="detail-ft">
+   
+          
+      
+      
+        <button class='detail-btn primary-color-background'  data-uuid='{{eventMap.uuid}}' catchtap='clickResult'>成绩查询</button>
+   
+</view>

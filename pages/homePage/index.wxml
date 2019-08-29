@@ -1,0 +1,117 @@
+
+<view class='activity_background_view' catchtouchmove='true' >
+    <image  catchtap='click_eventDetail' mode='aspectFill' class='activity_backgroundImg' src='{{eventMap.standImg}}' id="wlt_bottom">
+    </image>
+    
+
+   
+    
+ <view  wx:if="{{0}}"  class='item-content'>
+        
+        <view class='item-text'>
+            <text class='item-title'>{{eventMap.title}}</text>
+             <view class='item-sub'>活动地点：{{eventMap.place}}</view>
+            <view class='item-sub'>报名开始：{{eventMap.start}}</view>
+             <view class='item-sub'>报名截止：{{eventMap.end}}</view>
+          <view class='item-sub'>报名人数：{{eventMap.count}}</view>
+         
+    </view>
+     
+        </view>
+    
+   
+ 
+ 
+ 
+    <view wx:if="{{eventMap.state}}" class="activity_detail {{menuFixed ? 'fixed': ''}}" bindtap='click_detail'>{{eventMap.activityType=='COMPETITION'?'赛事详情':'活动详情'}}</view>
+ 
+
+<view class="activity_btn_view" wx:if="{{eventMap.activityType=='EXPERIENCE'}}" >
+
+
+
+<block wx:if="{{loginAuthor==true}}">
+ 
+<button wx:if="{{eventMap.state=='END'||eventMap.state=='NOW'}}"  class='activity_vote' open-type='getUserInfo' data-type='vote'  bindgetuserinfo="onGotUserInfo">{{eventMap.state=='END'?'排行榜':'我要投票'}}</button> 
+ 
+ 
+<button wx:if="{{eventMap.joinState=='UNJOIN'&&eventMap.state=='NOW'}}" class='activity_signUp' data-type='signup'  open-type='getUserInfo'  bindgetuserinfo="onGotUserInfo" >我要报名
+
+</button> 
+ 
+</block>
+<block wx:else>
+<button wx:if="{{eventMap.state=='END'||eventMap.state=='NOW'}}"  class='activity_vote' bindtap='click_vote' >{{eventMap.state=='END'?'排行榜':'我要投票'}}</button> 
+<button wx:if="{{eventMap.joinState=='UNJOIN'&&eventMap.state=='NOW'}}" class='activity_signUp' bindtap='click_signUp' >我要报名
+
+</button> 
+</block>
+
+
+</view>
+
+<view class="activity_btn_view" wx:if="{{eventMap.activityType=='COMPETITION'}}" >
+
+
+
+ 
+<view wx:if="{{eventMap.joinState=='UNJOIN'&&eventMap.state=='NOW'}}" class='activity_signUp' bindtap='click_signUp_competition' >我要报名
+
+</view> 
+
+</view>
+
+
+
+</view>
+
+ 
+ 
+ 
+
+ 
+       
+<view  wx:if="{{is_detail}}" class='background-view'  catchtouchmove='true'>
+</view>
+ 
+<view wx:if="{{is_detail}}"  class='scroll-view'   catchtouchmove='true' >
+<scroll-view     scroll-y='true' class='scroll' catchtouchmove='true'>
+
+<view class='detail-title'>
+<view class='detail-title-num'>1</view>
+<text class='detail-title-text'>{{eventMap.activityType=='COMPETITION'?'赛事介绍':'活动介绍'}}</text>
+</view>
+<rich-text class='detail-text' nodes="{{eventMap.introduce}}" space="nbsp">
+ </rich-text>
+
+<view class='detail-title'>
+<view class='detail-title-num'>2</view>
+<text  class='detail-title-text'>{{eventMap.activityType=='COMPETITION'?'赛事组别':'行程安排'}}</text>
+</view>
+<rich-text class='detail-text' nodes="{{eventMap.schedule}}" space="nbsp">
+ </rich-text>
+
+<view class='detail-title'>
+<view class='detail-title-num'>3</view>
+<text class='detail-title-text'>注意事项</text>
+</view>
+<rich-text class='detail-text' nodes="{{eventMap.attention}}" space="nbsp">
+ </rich-text>
+ 
+</scroll-view>
+
+ <image  mode="aspectFill" class='detail_cancel' bindtap='click_detail' src='/image/home/detail_cancel.png'>
+    </image>
+
+
+</view>
+
+<!-- <view class='authorization' wx:if="{{loginAuthor==true}}" catchtouchmove='true'>
+<image  mode="aspectFill" src='/image/general/autro.png'></image>
+<view>还没有得到您的授权…暂时无法查看详细内容哦！ </view>
+<button   class='authorbtn' open-type='getUserInfo'  bindgetuserinfo="onGotUserInfo" >获取授权</button>
+</view> -->
+ 
+ 
+
+ 

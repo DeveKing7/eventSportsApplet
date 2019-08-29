@@ -1,0 +1,11 @@
+.detail-text{
+
+ 
+ line-height: 50rpx;
+ font-size: 28rpx;
+ 
+ word-break: break-all;
+ word-wrap: break-word;
+
+
+}

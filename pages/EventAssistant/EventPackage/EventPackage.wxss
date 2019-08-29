@@ -1,0 +1,154 @@
+.top-view{
+
+display:flex;
+flex-direction: column;
+align-content: space-between;
+align-items: center;
+text-align: center;
+
+  
+}
+.titleView{
+
+  line-height: 100rpx;
+color: #666;
+font-size: 35rpx;
+
+}
+.line{
+ 
+background-color: #ddd;
+width: 300rpx;
+height: 2rpx;
+ border-bottom: 2rpx solid #ddd;
+
+
+}
+.bottom-view{
+  margin-top: 50rpx;
+  display:flex;
+flex-direction: column;
+align-content: space-between;
+align-items: center;
+text-align: center;
+
+}
+.center-view{
+margin-top: 50rpx;
+display:flex;
+flex-direction: column;
+align-content: space-between;
+align-items: center;
+width: 100%;
+  
+}
+.numberView{
+width: 100%;
+display:flex;
+flex-direction: column;
+align-content: space-between;
+align-items: center;
+
+}
+.idView{
+
+ width: 85%;
+ height: 300rpx;
+
+
+}
+.number{
+
+position: absolute;
+color: white;
+font-size: 200rpx;
+line-height: 300rpx;
+padding-top: 120rpx;
+
+}
+
+.codeView{
+
+margin-top: 50rpx;
+
+ width: 350rpx;
+ height: 350rpx;
+
+
+
+}
+
+
+
+
+
+
+
+.detail-ft {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 999;
+}
+
+.detail-btn {
+  height: 120rpx;
+  line-height: 120rpx;
+  /* background: linear-gradient(#ff8c00, #fe6500); */
+  font-size: 32rpx;
+  color: #fff;
+  border-radius: 0;
+}
+
+
+.weui-cells {
+  padding-top: 10rpx;
+  margin-top: 50rpx;
+}
+
+.weui-cells::before {
+  content: none;
+}
+
+.weui-label, .weui-input {
+}
+
+.weui-cell__hd {
+}
+
+.weui-cell {
+  height: 100rpx;
+}
+
+ 
+
+ 
+.primary-color {
+  color: #333;
+}
+
+.weui-label, .weui-input {
+  color: rgb(43, 120, 183);
+  font-size: 32rpx;
+}
+
+.weui-input {
+  color: #333;
+  text-align: center;
+}
+
+.weui-cell:before {
+  border-top: 0rpx;
+  height: 0rpx;
+  border-bottom: 1px solid #eee;
+  left: 0px;
+}
+
+.weui-cells:after {
+  border-bottom: 0rpx;
+}
+
+ 
+ 

@@ -1,0 +1,119 @@
+<!--pages/productOrder/list/list.wxml-->
+ 
+
+
+
+
+
+
+
+
+  
+        <!-- <view class="weui-tab__content" hidden="{{activeIndex != 0}}">选项一的内容</view>
+                <view class="weui-tab__content" hidden="{{activeIndex != 1}}">选项二的内容</view> -->
+        <view wx:if="{{eventMap.title}}" class="weui-tab__content">
+            
+
+           <view class='order-item'>
+    <view class='item-upper'>
+        <image  mode="widthFix" class='event-img' src='{{eventMap.acrossImg}}_375'></image>
+        <view class='event-signUp'  wx:if="{{eventMap.SignUp==true}}"><image  mode="aspectFit" class='event-signUp' src='/image/Event/haveToSignUp.png'></image></view>
+        
+    </view>
+ 
+  
+ 
+  
+ 
+
+   <navigator   wx:if="{{eventMap.acrossImg}}"  hover-class='none' class='item-content'>
+        
+      
+        
+          
+        <view class='item'>
+            <text class='item-title'>{{eventMap.title}}</text>
+
+            <view class='item-top'>  
+            <view class='item-count-view'> <view class='item-count'>{{eventMap.count==null?0:eventMap.count}}</view>已报名</view>
+            
+            <view wx:if="{{eventMap.joinState=='JOIN'}}" class='signUp-unJoin'>已报名</view>
+            <view wx:if="{{eventMap.joinState=='UNJOIN'}}" class='signUp-unJoin'>未报名</view>
+            <view wx:if="{{eventMap.joinState=='UNSELECTED'}}" class='signUp-unJoin'>未入选</view>
+             <view wx:if="{{eventMap.joinState=='SELECTED'}}" style='background-color:rgb(232, 77, 85)' class='signUp-unJoin'>已入选</view>
+            
+             </view>
+               	<!-- 项目分类 -->
+					<div wx:if="{{eventMap.type=='COMPETITION'}}" class='category-list'>
+						<div   wx:for="{{categoryList}}"  wx:key="index">
+							<navigator class='category-list-item' url="{{item.page}}?uuid={{uuid}}&h5={{item.url}}&functionId={{item.uuid}}&title={{eventMap.title}}成绩查询&img={{eventMap.acrossImg}}" hover-class='none'>
+								<image class='category-item-logo' src='{{item.logo}}'></image>
+								<div class='category-item-name'>
+									{{item.functionName}}
+								</div>
+							</navigator>
+						</div>
+					</div>
+          
+          <view  wx:if="{{eventMap.type=='EXPERIENCE'}}" class='item-center-bottom'>
+          <view wx:if="{{eventMap.typeTitle!=null}}" class='item-sub '><image  class='icon' src='/image/detail/eventtype.png'></image>{{eventMap.typeTitle}}</view>
+            
+            <view class='item-sub'> <image  class='icon' src='/image/detail/signuptime.png'></image>报名时间：{{eventMap.applyStartTime+"~"+eventMap.applyEndTime}}</view>
+             <view class='item-sub'> <image  class='icon' src='/image/detail/eventtime.png'></image>{{eventMap.type=='COMPETITION'?'赛事时间：':'活动时间：'}}{{eventMap.activityStartTime+"~"+eventMap.activityEndTime}}</view>
+            
+             <view wx:if="{{eventMap.sponsor}}" class='item-sub'><image  class='icon' src='/image/detail/zhubanfang.png'></image><text style='flex-shrink:0'>主办单位：</text><text>{{eventMap.sponsor}}</text></view>
+                        <view class='item-sub'><image  class='icon' src='/image/detail/adress.png'></image>{{eventMap.type=='COMPETITION'?'赛事地点：':'活动地点：'}}{{eventMap.address}}</view>
+                        
+         </view>
+
+        </view>
+        
+    </navigator>  
+ 
+   
+
+</view>
+ 
+
+        </view>
+
+ <view  class="weui-tab">
+
+    <view  wx:if="{{eventMap}}"  class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+            <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                <view class=" {{activeIndex == index ? 'weui-navbar__title_selecetd' : 'weui-navbar__title'}}">{{item}}</view>
+            </view>
+        </block>
+        <view class="weui-navbar__slider" style="width:{{sliderWidth}}px;background:linear-gradient(to right,#0F6BAF,#0e7BAF);left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+        
+    </view>
+ 
+
+  </view>
+     <view class='content-view'>
+  <rich-text wx:if="{{activeIndex==0}}"  nodes="{{eventMap.introduce}}" type='text' space="nbsp"></rich-text>
+     <rich-text wx:if="{{activeIndex==1}}"  nodes="{{eventMap.schedule}}" type='text' space="nbsp"></rich-text>
+      <rich-text wx:if="{{activeIndex==2}}"  nodes="{{eventMap.attention}}" type='text' space="nbsp"></rich-text>
+      </view>
+
+    <view style="padding:60rpx"></view>
+    <view  class="detail-ft">
+       <block wx:if="{{loginAuthor==true}}">
+     <button wx:if="{{eventMap.state=='NOW'&&eventMap.type=='EXPERIENCE'}}" class='detail-btn primary-color-background '   open-type='getUserInfo' data-type='vote'  bindgetuserinfo="onGotUserInfo">我要投票</button>
+      <button wx:if="{{eventMap.state=='NOW'&&eventMap.joinState=='UNJOIN'}}" class='detail-btn primary-color-background' style='flex-grow:3;background-color:#EA5454'  data-type='signup'  open-type='getUserInfo'  bindgetuserinfo="onGotUserInfo">我要报名</button>
+      <button  wx:if="{{eventMap.state=='END'&&eventMap.type=='EXPERIENCE'}}" class='detail-btn primary-color-background' open-type='getUserInfo' data-type='vote'  bindgetuserinfo="onGotUserInfo">排行榜</button>
+           <button wx:if="{{eventMap.type=='EXPERIENCE'&&eventMap.score==true}}" class='detail-btn primary-color-background' style='flex-grow:3;background-color:#EA5454'  data-type='signup'  open-type='getUserInfo'  bindgetuserinfo="onGotUserInfo">成绩查询</button>
+
+ 
+      </block>
+
+      <block wx:else>
+       
+     <button wx:if="{{eventMap.state=='NOW'&&eventMap.type=='EXPERIENCE'}}" class='detail-btn primary-color-background'    bindtap='click_vote'>我要投票</button>
+      <button wx:if="{{eventMap.state=='NOW'&&eventMap.joinState=='UNJOIN'}}" class='detail-btn primary-color-background' style='flex-grow:3;background-color:#EA5454'  bindtap='click_signUp'>我要报名</button>
+      <button  wx:if="{{eventMap.state=='END'&&eventMap.type=='EXPERIENCE'}}" class='detail-btn primary-color-background' bindtap='click_vote'>排行榜</button>
+      <button wx:if="{{eventMap.type=='EXPERIENCE'&&eventMap.score==true}}" class='detail-btn primary-color-background' style='flex-grow:3;background-color:#EA5454'     bindtap='clickResult' >成绩查询</button>
+      </block>
+    </view>
+ 

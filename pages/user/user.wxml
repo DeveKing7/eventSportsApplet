@@ -1,0 +1,49 @@
+ <!-- <official-account></official-account> -->
+<view class='topview'>
+<view class='userview'>
+<image class='usericon'  mode='' src='{{user.headImageUrl}}' ></image>
+<view class='username'>{{user.name}}</view>
+
+</view>
+</view>
+<!-- <view class='wlt'></view> -->
+<view class="centerview"></view>
+<view class='listView' bindtap="nav2MyActivity">
+  <image class='lefticon' mode='widthFix' src='/image/user/icon-activity.png'></image>
+ 
+     <button wx:if="{{loginAuthor==true}}" class='listtitle'   open-type='getUserInfo'    bindgetuserinfo="onGotUserInfo">我的活动</button>
+  <button wx:else class='listtitle'>我的活动</button>
+  <image src="/image/user/arrow.png" class="rightarrow"></image>
+</view>
+<!-- <view class='listView'>
+  <image class='lefticon' mode='widthFix' src='/image/user/icon-news.png'></image>
+  <view class='listtitle'>公众号通知提醒</view>/
+   <image src="/image/user/arrow.png" class="rightarrow"></image>
+</view> -->
+<view class='listView'>
+  <image class='lefticon' mode='widthFix' src='/image/user/icon-setting.png'></image>
+  <button class='listtitle' open-type='openSetting'>小程序设置</button>
+   <image src="/image/user/arrow.png" class="rightarrow"></image>
+</view>
+<view class='listView' bindtap="makeCall">
+  <image class='lefticon' mode='widthFix' src='/image/user/kefu.png'></image>
+  <view class='listtitle'>客服电话：400-0511-101</view>
+  <image src="/image/user/arrow.png" class="rightarrow"></image>
+  </view>
+
+<!-- 
+  <view class='listView'>
+  <image class='lefticon'  mode='widthFix' src='/image/user/activity.png'></image>
+  <view class='listtitle'>我的活动</view>
+  <image class='rightarrow' src='/image/user/arrow.png'></image>
+  </view>
+  <view class='line'></view>
+
+   <view class='listView'>
+  <image class='lefticon' mode='widthFix'  src='/image/user/event.png'></image>
+  <view class='listtitle'>我的赛事</view>
+  <image class='rightarrow' src='/image/user/arrow.png'></image>
+  </view>
+   <view class='line'></view> -->
+ 
+

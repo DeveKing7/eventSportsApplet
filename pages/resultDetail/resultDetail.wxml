@@ -1,0 +1,163 @@
+
+<view class='topview' wx:if="{{eventMap.audit=='PENDING'}}">
+
+
+<view class='toptitle'>报名成功</view>
+<view>等待审核....</view>
+</view>
+<view class='topview' wx:if="{{eventMap.state=='REFUND'}}">
+
+
+<view class='toptitle'>已退款</view>
+<text>{{eventMap.refundDesc}}</text>
+</view>
+
+<view class='topview' wx:elif="{{eventMap.audit=='REJECTED'}}">
+
+
+<view class='toptitle'>审核被拒</view>
+<text>{{eventMap.auditDesc}}</text>
+</view>
+
+
+<navigator url='/pages/eventDetails/eventDetails?uuid={{eventMap.activityId}}'  class='item-upper' hover-class='none'  data-uuid="{{eventMap.uuid}}" data-state = "{{eventMap.state}}"  >
+        <image  mode='aspectFill' class='event-img' src="{{eventMap.acrossImg+'_375'}}"></image>
+
+
+    <view   class='item-content'>
+
+           <view class='item-title'>{{eventMap.activityTitle}}</view>
+           <view class='item-text'>组别：{{eventMap.groupName}}</view>
+              <view class='item-text'>年龄：{{eventMap.ageMinNum+'~'+eventMap.ageMaxNum}}周岁</view>
+                 <view class='item-text'>里程：{{eventMap.distance}}公里</view>
+
+  
+      
+       
+    </view>
+     </navigator>
+  
+     <!-- <view class='section-title'>订单信息</view>
+
+     <view class='order-info'>
+     
+     <view class='cell-title'>总支付费用 </view>
+     <view class='cell-text-blue'>¥{{eventMap.totalPrice}}</view>
+     
+     </view>
+
+
+     <view class='order-info'>
+     
+     <view class='cell-title'>报名费用 </view>
+     <view class='cell-text'>¥{{eventMap.signPrice*eventMap.count}}</view>
+     
+     </view>
+
+
+<view class='order-info' wx:if="{{eventMap.deposit*eventMap.count!=0}}">
+     
+     <view class='cell-title'>押金 </view>
+     <view class='cell-text'>¥{{eventMap.deposit*eventMap.count}}</view>
+     
+     </view>
+
+
+
+     <view class='order-info' wx:if="{{eventMap.carFare*eventMap.byCarNumber!=0}}">
+     
+     <view class='cell-title'>车费 </view>
+     <view class='cell-text'>¥{{eventMap.carFare*eventMap.byCarNumber}}</view>
+     
+
+   </view>
+   
+     <view class='order-info'>
+     
+     <view class='cell-title'>支付状态 </view>
+     <view class='cell-text-blue'>{{eventMap.state=='TOPAY'?'待支付':'已支付'}}</view>
+     
+     </view>
+
+       <view class='order-info'>
+     
+     <view class='cell-title'>支付时间</view>
+     <view class='cell-text'>{{eventMap.payTime}}</view>
+     
+     </view> -->
+
+ 
+
+     <view wx:for='{{eventMap.userList}}' wx:key="uuid">
+       <view   class='section-title'>报名信息</view>
+
+         <view class='order-info'>
+     
+     <view class='cell-title'>姓名</view>
+     <view class='cell-text'>{{item.name}}</view>
+     
+     </view>
+
+         <view class='order-info'>
+     
+     <view class='cell-title'>证件号码</view>
+     <view class='cell-text'>{{item.idCard}}</view>
+     
+     </view>
+
+         <view class='order-info'>
+     
+     <view class='cell-title'>手机号</view>
+     <view class='cell-text'>{{item.phone}}</view>
+     
+     </view>
+
+         <view class='order-info'>
+     
+     <view class='cell-title'>紧急联系人</view>
+     <view class='cell-text'>{{item.linkmanName}}</view>
+     
+     </view>
+
+         <view class='order-info'>
+     
+     <view class='cell-title'>联系人电话</view>
+     <view class='cell-text'>{{item.linkmanPhone}}</view>
+     
+     </view>
+
+<view wx:if="{{item.photo}}" class='section-title'>用户照片</view>
+
+
+     <view class='photo-view' wx:if="{{item.photo}}">
+     <image data-index='{{index}}' class='photo-img' mode='aspectFill' style="{{eventMap.audit=='REJECTED'&&eventMap.state!='REFUND'?'border: 5rpx solid red;':''}}" bindtap="{{eventMap.audit=='REJECTED'&&eventMap.state!='REFUND'?'click_HealCert':''}}" src='{{HealCert.length>0?HealCert[0]:item.photo}}'></image>
+    
+    </view>
+
+
+    <view wx:if="{{item.certHealImg}}" class='section-title'>健康证明</view>
+
+
+     <view class='photo-view' wx:if="{{item.certHealImg}}">
+     <image data-index='{{index}}' class='photo-img' mode='aspectFill' style="{{eventMap.audit=='REJECTED'&&eventMap.state!='REFUND'?'border: 5rpx solid red;':''}}" bindtap="{{eventMap.audit=='REJECTED'&&eventMap.state!='REFUND'?'click_photo':''}}" src='{{photo.length>0?photo[0]:item.certHealImg}}'></image>
+    
+    </view>
+
+        <view wx:if="{{item.certFinishImg}}" class='section-title'>完赛证明</view>
+
+
+     <view class='photo-view' wx:if="{{item.certFinishImg}}">
+     <image data-index='{{index}}' class='photo-img' mode='aspectFill' style="{{eventMap.audit=='REJECTED'&&eventMap.state!='REFUND'?'border: 5rpx solid red;':''}}" bindtap="{{eventMap.audit=='REJECTED'&&eventMap.state!='REFUND'?'click_FinishCert':''}}"src='{{FinishCert.length>0?FinishCert[0]:item.certFinishImg}}'></image>
+    
+    </view>
+
+     </view>
+
+<view style='padding:60rpx'> </view>
+     <view  wx:if="{{eventMap.audit=='REJECTED'&&eventMap.state!='REFUND'}}" class="detail-ft">
+   
+        
+      
+        <button class='detail-btn primary-color-background'  data-uuid='{{eventMap.uuid}}' catchtap='clickRejected'>重新审核</button>
+   
+</view>

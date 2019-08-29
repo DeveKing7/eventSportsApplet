@@ -1,0 +1,2 @@
+<!--pages/EventAssistant/picture/index.wxml-->
+<web-view  src="{{h5}}"></web-view>

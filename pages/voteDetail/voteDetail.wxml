@@ -1,0 +1,90 @@
+<view class='Vote-view-bottom'>
+<image class='Vote-view-top' mode='aspectFill' src=''></image>
+</view>
+
+<view  wx:if="{{eventMap.ranking}}"class='Vote-view'>
+
+<view   class='ranking-img' decode="{{true}}" space="{{true}}" ><view class='ranktext' style="{{eventMap.ranking>99?'font-size:55rpx;margin-top: 40rpx;':''}}">{{eventMap.ranking}}</view></view>
+<view>{{eventMap.name}}</view>
+<view class='sub-view'>
+<view class='sub-v'>编号：{{eventMap.activityNum}}</view>
+<view class='sub-v'>票数：{{eventMap.count}}</view>
+<!-- <view class='sub-v'> 访问量：1253</view> -->
+
+</view>
+
+
+</view>
+ <navigator wx:if="{{activityInfo.title}}"  class="order-item"  wx:key="uuid" url='/pages/eventDetails/eventDetails?uuid={{eventMap.activityId}}'>
+    <view class='item-upper' hover-class='none'    >
+        <image  mode="widthFix" class='event-img' src="{{activityInfo.acrossImg+'_375'}}"></image>
+     
+
+         <!-- <view wx:if="{{item.joinState=='JOIN'}}" class='event-signUp'>已报名</view>
+            <view wx:if="{{item.joinState=='UNJOIN'}}" class='event-signUp'>未报名</view>
+            <view wx:if="{{item.joinState=='UNSELECTED'}}" class='event-signUp'>未入选</view>
+             <view wx:if="{{item.joinState=='SELECTED'}}"  style='background-color:rgb(232, 77, 85)' class='event-signUp'>已入选</view> -->
+        
+    </view>
+    <view   class='item-content'   >
+
+           <view class='item-title'><text style="margin-left: -15rpx;{{item.state=='NOW'?'color:#ed5400;':'color:#ccc;'}}">{{item.state=='NOW'?"【正在报名】":"【报名结束】"}}</text>{{activityInfo.title}}</view>
+
+            <view class='center-item'>
+               <view class='item-count-view'> <view class='item-count'>{{eventMap.enterforNum==null?0:eventMap.enterforNum}}</view>人已报名</view>
+   
+            </view>
+
+    <view class='bottom-item'>
+             <view class='item-time'>举办地点：{{eventMap.address}}</view>
+           <!-- <view class='action_red' wx:if="{{item.state=='END'}}">    
+            活动已结束 
+            </view>
+    <view class='action' wx:if="{{item.state=='NOW'}}">
+            报名进行中 
+    </view> -->
+            </view>
+
+                <view class='bottom-item'>
+             <view class='item-time'>活动时间：{{activityInfo.activityStartTime+'~'+activityInfo.activityEndTime}}</view>
+ 
+            </view>
+
+        
+         
+           
+         
+          
+          
+      
+       
+    </view>
+</navigator>
+ 
+    <view   class='bottom-view-placeholder'>
+    </view>
+    <view  wx:if="{{eventMap.state=='NOW'}}" class='bottom-view'>
+    
+    <!-- <view class='button-view-join' wx:if="{{eventMap.joinState=='UNJOIN'}}" bindtap='click_signUp'>
+    <image class='button-icon' src='/image/vote/vote-join.jpg'></image>
+    <text class='button-text'>我要参加</text>
+    </view> -->
+    <view class='button-view-vote' bindtap='click_vote' >
+    <image class='button-icon' src='/image/vote/vote-vote.jpg'></image>
+    <text class='button-text'>投票</text>
+    </view>
+   <button class='button-view-canvass' open-type="share" hover-class='none'>
+    <image class='button-icon' src='/image/vote/vote-canvass.jpg'></image>
+    <text class='button-text'>帮忙拉票</text>
+    </button>
+    
+    </view>
+
+
+
+<view class='authorization' wx:if="{{loginAuthor==true}}" catchtouchmove='true'>
+<image  mode="aspectFill" src='/image/general/autro.png'></image>
+<view>还没有得到您的授权…暂时无法查看详细内容哦！ </view>
+<button   class='authorbtn' open-type='getUserInfo'  bindgetuserinfo="onGotUserInfo" >获取授权</button>
+</view>
+ 

@@ -1,0 +1,5 @@
+<!--pages/EventAssistant/EventResult/certIndex.wxml-->
+<view style="margin:40rpx;font-size:32rpx;text-align:center;color:#fff;">点击图片全屏后可长按保存，并分享至朋友圈</view>
+<view class="imgView">
+<image style="width:90%;" mode="widthFix" src="{{cert}}_375" bindtouchstart='timestart' bindtouchend='timeend' bindtap='saveImg'></image>
+</view>

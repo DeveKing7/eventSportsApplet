@@ -1,0 +1,46 @@
+<view wx:for="{{groupList}}" wx:key="key">
+  <navigator class='itemView' url="{{(item.amount-item.enterAmount)!=0?item.isTeam==false?'/pages/toSignUp/CompetitionSignUp?groupId='+item.uuid+'&isTeam='+item.isTeam+'&groupType='+item.groupType+'&activityId='+uuid+'&disclaimer='+disclaimer:'/pages/toSignUp/CompetitionSignUpTeam?groupId='+item.uuid+'&isTeam='+item.isTeam+'&groupType='+item.groupType+'&activityId='+uuid+'&disclaimer='+disclaimer:''}}">
+
+    <view class='title'>{{item.groupName}}</view>
+    <view class='subView'>
+      <view class='distance'>{{'里程：'+item.distance+'km'}}</view>
+      <view class='age'>{{'年龄：'+item.ageMinNum+'~'+item.ageMaxNum+'周岁'}}</view>
+      <view  wx:if="{{item.startTime}}" class='startTime'>{{'开门时间：'+item.startTime}}</view>
+       <view  wx:if="{{item.endTime}}" class='startTime'>{{'关门时间：'+item.endTime}}</view>
+      <view class='bottomView'>
+        <view class='price'>{{'报名费用：¥'+item.price}}</view>
+        <!-- <view class='num'>{{'剩余：'+(item.amount-item.enterAmount)+'人'}}</view> -->
+      </view>
+       <view  wx:if="{{item.remark}}"  >{{'备注：'+item.remark}}</view>
+
+    </view>
+
+  </navigator>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</view>

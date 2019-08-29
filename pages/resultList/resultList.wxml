@@ -1,0 +1,50 @@
+
+
+<view  wx:if="{{eventList}}" class="weui-tab">
+
+    <!-- <view class="weui-navbar {{menuFixed ? 'fixed': ''}} "  id="affix" >
+        <block wx:for="{{tabs}}" wx:key="*this">
+            <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                <view class="weui-navbar__title">{{item}}</view>
+            </view>
+        </block>
+        <view class="weui-navbar__slider" style="width:{{sliderWidth}}px;background-color: rgb(40, 117, 180);left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+    </view> -->
+    <view class="weui-tab__content">
+  <navigator  wx:for="{{eventList}}"  class=" order-item"  wx:key="uuid" url='/pages/resultDetail/resultDetail?uuid={{item.signOrderUuid}}&activityId={{item.activityId}}&type=result'>
+<view class='item-upper' hover-class='none'  data-uuid="{{item.uuid}}" data-state = "{{item.state}}"  >
+        <image  mode='aspectFill' class='event-img' src="{{item.acrossImg+'_375'}}"></image>
+
+
+    <view   class='item-content'>
+          <view wx:if="{{activeIndex==0}}">
+           <view class='item-title'>{{item.activityTitle}}</view>
+           <view class='item-text'>组别：{{item.groupName}}</view>
+            
+                 <view class='item-text'>里程：{{item.distance}}公里</view>
+                   <view class='item-text'>报名费用：{{item.totalPrice}}</view>
+
+                 <view class='item-text'>报名时间：{{item.joinTime}}</view>
+      
+       </view> 
+   
+     <view wx:if="{{activeIndex==1}}">
+           <view class='item-title'>{{item.title}}</view>
+           <view class='item-text'>票数：{{item.count}}</view>
+            
+                 <view class='item-text'>活动地点：{{item.address}}</view>
+                  
+
+                 <view class='item-text'>报名时间：{{item.joinTime}}</view>
+      
+       </view> 
+  </view > 
+ 
+    <image wx:if="{{item.audit=='VERIFIED'}}"  model='aspectFill' class='stateimg' src='/image/result/pass.png'></image>
+      <image wx:if="{{item.audit=='PENDING'}}" model='aspectFill' class='stateimg' src='/image/result/pending.png'></image>
+        <image wx:if="{{item.audit=='REJECTED'}}" model='aspectFill'  class='stateimg' src='/image/result/unpass.png'></image>
+    
+     </view>
+     </navigator>
+     </view>
+     </view>

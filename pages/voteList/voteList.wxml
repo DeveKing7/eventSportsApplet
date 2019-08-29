@@ -1,0 +1,81 @@
+ 
+
+<view  id="affix" class="fixed-search {{menuFixed ? 'fixed': ''}}" >
+<view  wx:if="{{myData.joinState}}">
+ <navigator wx:if="{{myData.joinState!='UNJOIN'&&myData.joinState}}" class="myVote-view"  hover-class='none' >
+<view   class='ranking-img' >
+<view class='ranktext' style="{{myData.ranking>99?'font-size:55rpx;margin-top: 40rpx;':''}}">{{myData.ranking}}</view>
+</view>
+<view>我的票数</view>
+<view>{{myData.count}}</view>
+<view>
+<navigator  wx:if="{{myData.joinState=='JOIN'}}"class='canvassing'  url='/pages/voteDetail/voteDetail?uuid={{myData.userId}}&activityId={{activityId}}&area={{myData.area}}'   hover-class='none'>拉票</navigator>
+</view>
+</navigator>
+</view>
+
+<view class="weui-tab">
+
+    <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+            <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" catchtap="tabClick">
+                <view class="weui-navbar__title">{{item}}</view>
+            </view>
+        </block>
+        <view class="weui-navbar__slider" style="width:{{sliderWidth}}px;background-color: white;left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+    </view>
+
+  
+   </view>
+  <view class="search-outer" >
+    <view class='search-inner' hidden="{{searchInputShowed}}" catchtap="showSearchInput">
+        <icon class="search-icon" type="search" size="14"></icon>
+        <view style="color: #9b9b9b;">{{searchInputValueTemp==''?'输入姓名或编号':searchInputValueTemp}}</view>
+    </view>
+    <view class='search-inner' hidden="{{!searchInputShowed}}">
+        <icon class="search-icon" type="search" size="14"></icon>
+        <input type="search"   placeholder="输入姓名或编号" value="{{searchInputValue}}" focus="{{searchInputShowed}}" bindinput="searchInputTyping" bindconfirm="searchInputConfirm" />
+        <view class="clear-icon" wx:if="{{searchInputValue.length > 0}}" catchtap="clearSearchInput">
+            <icon type="clear"   size="16"></icon>
+        </view>
+    </view>
+    <view class="search-cancel" hidden="{{!searchInputShowed}}" catchtap="hideSearchInput">取消</view>
+</view>
+
+</view>
+
+ 
+<view wx:if="{{voteList.length==0}}"  class='null-view'>
+
+<image src='/image/general/listdefault.png' mode='aspectFill' style='width:250rpx;height:250rpx;'></image>
+<text style='color:#999;font-size:30rpx;margin-top:25rpx;'>暂时还没有用户参加哦~</text>
+
+</view>
+<view wx:for='{{voteList}}' wx:key='index'  class=" {{menuFixed ? 'vote-list': ''}}">
+<navigator url='/pages/voteDetail/voteDetail?uuid={{item.uuid}}&activityId={{activityId}}&area={{citys[activeIndex]}}' class='vote-cell'    hover-class='none'>
+
+<image wx:if='{{item.ranking==1}}' mode='aspectFill' src='/image/vote/NO1.png' class='vote-ranking-icon'></image>
+<image wx:if='{{item.ranking==2}}'  mode='aspectFill' src='/image/vote/NO2.png' class='vote-ranking-icon'></image>
+<image wx:if='{{item.ranking==3}}'  mode='aspectFill' src='/image/vote/NO3.png' class='vote-ranking-icon'></image>
+<view class='vote-ranking-text' wx:if='{{item.ranking>3}}'>{{item.ranking}}</view>
+<image class='vote-headimg'  mode='aspectFill'  src='{{item.headImageUrl}}_120'> </image>
+<view class='vote-content'>
+<view class='name'>{{item.name}}</view>
+<view class='voteNumber'>编号：{{item.activityNum}}</view>
+</view>
+<view class='vote-count'>{{item.count}}</view>
+<view class='vote-background' catchtap='click_vote' data-uuid='{{item.uuid}}' data-index='{{index}}' ></view>
+<view  wx:if="{{state=='NOW'}}" class='vote-button'  catchtap='click_vote' data-uuid='{{item.uuid}}' data-index='{{index}}' hover-class='ui-share-hover'  >投票</view>
+ 
+
+</navigator>
+
+</view>
+
+
+<!-- <view class='authorization' wx:if="{{loginAuthor==true}}" catchtouchmove='true'>
+<image  mode="aspectFill" src='/image/general/autro.png'></image>
+<view>还没有得到您的授权…暂时无法查看详细内容哦！ </view>
+<button   class='authorbtn' open-type='getUserInfo'  bindgetuserinfo="onGotUserInfo" >获取授权</button>
+</view> -->
+

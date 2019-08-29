@@ -1,0 +1,282 @@
+
+
+.activity_background_view{
+position: absolute;
+  
+  width: 100%;
+  height: 100%;
+  display:flex;
+ flex-direction: column;
+ 
+ 
+ 
+ background-color: #fff;
+ 
+ 
+ 
+}
+
+.background-view{
+position: absolute;
+height: 100%;
+width: 100%;
+
+background-color:rgba(0, 0, 0, 0.6);
+ 
+
+}
+.scroll-view{
+display: flex;
+
+position: absolute;
+ 
+   word-break: break-all;
+
+  flex-direction: column;
+   justify-content: center;
+   align-content: center;
+   align-items: center;
+   
+
+
+ 
+  width: 100%;
+  height: 100%;
+
+}
+.scroll{
+  
+ 
+  
+   color: white;
+   font-size: 35rpx;
+ 
+
+ 
+  
+ 
+  width: 80%;
+  height: 90%;
+
+
+}
+::-webkit-scrollbar{
+width: 0;
+height: 0;
+color: transparent;
+}
+.detail-title{
+display: flex;
+	flex-direction: row;
+  align-items: center;
+  line-height: 90rpx;
+  font-weight:800;
+
+}
+
+.detail-title-num{
+  font-size: 30rpx;
+
+width: 40rpx;
+height: 40rpx;
+line-height: 40rpx;
+text-align: center;
+border-radius: 20rpx;
+color: #333;
+background-color: white;
+
+
+}
+.detail-title-text{
+
+margin-left: 20rpx;
+font-size: 34rpx;
+ 
+
+
+
+}
+.detail-text{
+
+line-height: 50rpx;
+ font-size: 28rpx;
+ 
+ word-break: break-all;
+ word-wrap: break-word;
+
+
+}
+.detail_cancel{
+  position: absolute;
+  top: 40rpx;
+  right: 40rpx;
+  width: 60rpx;
+  height: 60rpx;
+
+}
+.activity_backgroundImg{
+ height: 100%;
+ width: 100%;
+}
+
+ .item-content {
+ 
+	display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+    font-size: 28rpx;
+ 
+    background-color: rgb(247, 248, 206);
+ 
+    width: 100%;
+  
+    
+     
+}
+.item-text{
+
+  background-color: rgb(40, 117, 180);
+  color: white;
+  padding: 40rpx;
+  border-radius: 15rpx;
+}
+.item-title {
+    font-weight: bold;
+    font-size: 36rpx;
+ 
+  word-break: break-all;
+  line-height: 90rpx;
+   
+
+}
+
+.item-sub {
+    margin-top: 10rpx;
+    font-size: 33rpx;
+      word-break: break-all;
+      line-height: 60rpx;
+}
+
+.activity_detail{
+   
+ position: fixed;
+ 
+width: 180rpx;
+height: 81rpx;
+background-color:red;
+border: 5rpx solid white;
+ 
+ 
+border-radius:10rpx;
+
+color: white;
+font-size: 35rpx;
+text-align: center;
+line-height: 81rpx;
+right: 31rpx;
+top: 26rpx;
+
+}
+.activity_btn_view{
+  
+ 
+position: fixed;
+
+display: flex;
+width: 100%;
+
+justify-content: space-around;
+
+ color: white;
+ font-weight: bold;
+ font-size: 37rpx;
+height: 81rpx;
+bottom: 60rpx;
+ 
+ 
+
+}
+.fixed{
+/* 这里css的顺序也会影响样式的布局 */
+ position: absolute;
+ 
+
+}
+.activity_signUp{
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  
+text-align: center;
+border-radius: 60rpx;
+border: 8rpx solid white;
+width: 306rpx;
+ height:88rpx;
+ line-height: 88rpx;
+ font-size: 37rpx;
+ color:white;
+  background-color: #ff3f20;
+
+}
+.activity_vote{
+    display: flex;
+  align-items: center;
+  justify-content: center;
+
+text-align: center;
+border-radius: 60rpx;
+border: 8rpx solid white;
+width: 306rpx;
+ height:88rpx;
+  font-size: 37rpx;
+  color:white;
+ line-height: 88rpx;
+ background-color: #0f6baf;
+ 
+ 
+
+}
+.authorization{
+ 
+ width: 100%;
+ height: 100%;
+ position: absolute;
+ z-index: 99;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ align-content: center;
+ 
+ text-align: center;
+ background-color: white;
+ color: #333;
+ font-size: 25rpx;
+
+ 
+
+
+
+}
+.authorization image{
+
+margin-bottom: 40rpx;
+width: 154rpx;
+height: 197rpx;
+
+}
+.authorization button{
+
+margin-top: 40rpx;
+width: 221rpx;
+height: 70rpx;
+color: white;
+font-size: 30rpx;
+background-color: #0f6baf;
+line-height: 70rpx;
+
+
+}
+
+

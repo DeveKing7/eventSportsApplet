@@ -1,0 +1,5 @@
+<!--pages/EventAssistant/generalPage/index.wxml-->
+
+<view style="margin:30rpx;">
+<rich-text class='detail-text' nodes="{{info.desc}}" space="nbsp" ></rich-text>
+</view>

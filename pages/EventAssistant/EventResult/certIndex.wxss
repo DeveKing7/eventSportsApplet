@@ -1,0 +1,18 @@
+/* pages/EventAssistant/EventResult/certIndex.wxss */
+.text{
+text-align: center;
+  
+}
+.imgView{
+
+display: flex;
+justify-content: center;
+align-content: center;
+align-items: center;
+
+
+}
+page{
+
+  background-color: #000;
+}

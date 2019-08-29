@@ -1,0 +1,339 @@
+/* pages/productOrder/list/list.wxss */
+
+page {
+    background-color: #efefef;
+}
+.contet{
+background-color: #efefef;
+
+}
+
+.weui-navbar {
+  
+    background: #fff;
+     border-bottom:0rpx;
+      position: sticky;
+    top: 0 ; 
+    
+}
+.weui-tab{
+
+background-color: #efefef;
+
+ 
+
+}
+.wlt1{
+
+ 
+  left: 0;
+  z-index: 99;
+ background-color: black;
+ height: 100rpx;
+ width: 100%;
+ 
+ color: red;
+ line-height: 100rpx;
+ text-align: center;
+  
+ position: sticky;
+    top: 0 ;
+
+}
+.wlt{
+position: fixed;
+  top:0;
+  left: 0;
+  z-index: 99;
+ background-color: black;
+ height: 100rpx;
+ width: 100%;
+ 
+ color: red;
+ line-height: 100rpx;
+ text-align: center;
+
+
+}
+.fixed{
+
+ 
+ 
+ box-shadow: 0rpx 5rpx 10rpx #ddd;
+
+ 
+ 
+
+}
+.weui-navbar__item.weui-bar__item_on {
+    color:rgb(40, 117, 180);
+    font-size: 32rpx;
+}
+.weui-navbar__item{
+
+
+color:#7f8389;
+
+}
+.weui-navbar__title_selecetd{
+
+ font-size: 35rpx;
+ 
+  
+}
+.weui-navbar__title{
+
+   font-size: 32rpx;
+}
+.weui-tab__content {
+    margin-top: 20rpx;
+    background-color: #efefef;
+}
+.item-upper {
+ 
+    display: flex;
+  
+    flex-direction: row;
+
+ 
+     align-content: center;
+    align-items: center;
+ 
+      border-bottom: 2rpx solid #eee;
+    
+     
+   padding-bottom: 25rpx;
+    font-size: 28rpx;
+ 
+
+   
+}
+.weui-tab__panel .weui-tab__content{
+
+  background-color: #fff;
+}
+.event-img{
+
+ 
+max-width: 189rpx;
+ max-height: 189rpx;
+ 
+ 
+ 
+  
+
+}
+.event-signUp{
+
+ 
+position: absolute;
+
+margin-top: 28rpx;
+ color: white;
+ background-color: #0f6baf;
+ line-height: 44rpx;
+ text-align: center;
+ font-size: 32rpx;
+width: 139rpx;
+height: 44rpx;
+
+
+}
+.order-empty{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  font-size: 28rpx;
+	color: #333;
+
+}
+.order-empty image{
+	width: 250rpx;
+	height:154rpx;
+	margin: 250rpx 0rpx 50rpx;
+}
+
+ 
+
+.item-image {
+    width: 80rpx;
+    height: 80rpx;
+    flex-shrink: 0;
+    margin-right: 20rpx;
+}
+
+ 
+
+ 
+
+ 
+
+.state {
+    font-size: 24rpx;
+}
+
+ 
+.order-item {
+    background-color: #fff;
+  
+     
+   
+    margin: 40rpx 25rpx 20rpx;
+
+    padding: 25rpx 25rpx  0rpx 25rpx;
+
+  
+    color: #555;
+ 
+}
+ 
+
+ 
+ 
+.venue-link{
+    width: 100%;
+}
+.item-state{
+    flex-shrink: 0;
+}
+
+.item-content {
+	display: flex;
+  
+   word-break: break-all;
+ 
+  flex-direction: column;
+  justify-content: space-between;
+  
+    font-size: 28rpx;
+ 
+ 
+ 
+  margin-left: 30rpx;
+    line-height: 80rpx;
+ 
+ 
+}
+
+.item{
+width: 100%;
+height: 100%;
+ 
+
+ 
+}
+.center-item{
+display: flex;
+ flex-direction: row;
+ 
+  line-height: 60rpx;
+  font-size: 20rpx;
+   color: #8d8d8d;
+  
+}
+.bottom-item{
+display: flex;
+ flex-direction: column;
+ align-content: center;
+ align-items: flex-end;
+ justify-content: center;
+ font-size: 28rpx;
+ margin-top: 0rpx;
+ line-height: 80rpx;
+   color: #8d8d8d;
+  font-weight: bold;
+ 
+
+}
+.button-item{
+
+display: flex;
+ flex-direction: row;
+ align-content: center;
+ align-items: center;
+ justify-content: flex-end;
+ font-weight: bold;
+ line-height: 60rpx;
+ padding-bottom: 25rpx;
+ font-size: 25rpx;
+ 
+
+}
+
+ 
+
+.item-group{
+
+margin-top: 10rpx;
+
+}
+
+.item-text {
+    margin-right: 10rpx;
+       font-size: 28rpx;
+}
+.item-title {
+    font-weight: bold;
+    font-size: 36rpx;
+    line-height: 50rpx;
+}
+
+.item-time {
+ 
+    color: #535353;
+    font-size: 30rpx;
+    line-height: 80rpx;
+    
+    
+}
+.item-action{
+ font-size: 30rpx;
+	display: flex;
+
+  height: 28rpx;
+   
+}
+.action{
+  font-size: 30rpx;
+	text-align: center;
+	width: 158rpx;
+ 
+ background-color: #0f6baf;
+   border-radius: 40rpx;
+    color: #fff;
+ 
+margin-left: 30rpx;
+ 
+ 
+ 
+ 
+   
+}
+.action_red{
+ font-size: 30rpx;
+	text-align: center;
+  
+	width: 158rpx;
+
+  
+ 
+
+   background-color: #efefef;
+      border-radius: 40rpx;
+    color: #7d7d7d;
+ border: 1rpx solid #9a9a9a;
+ 
+ 
+ 
+   
+}
+
+.action-primary-border {
+	border: 1rpx solid rgb(40, 117, 180);
+}
+
+.action-margin{
+	margin-right: 20rpx;
+}
+
+ 

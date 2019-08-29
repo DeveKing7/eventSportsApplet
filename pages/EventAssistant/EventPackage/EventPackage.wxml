@@ -1,0 +1,67 @@
+<!-- <view class="top-view"> 
+<view class="titleView">王立涛 B013</view>
+<view class="line"></view>
+</view> -->
+<view class="center-view"> 
+<view class="numberView">
+<image class="idView" mode="widthFix" src="{{userMap.background}}"></image>
+<view  wx:if="{{userMap.activityNum!=null}}" class="number">{{userMap.activityNum}}</view>
+</view>
+
+
+
+<image class="codeView" wx:if="{{userMap.barcode!=null}}" src="data:image/png;base64,{{userMap.barcode}}" catchtap="loadData"></image>
+
+</view>
+<view class="bottom-view">
+<view class="titleView">个人信息</view>
+<view class="line"></view>
+</view>
+ 
+ 
+    <view class="weui-cells weui-cells_after-title">
+
+  <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">姓名</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input   disabled='true'   class="weui-input" type='idcard' name="cardNumber" value="{{userMap.name}}" />
+
+            </view>
+        </view>
+
+           
+
+           <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">参赛号</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input   disabled='true'   class="weui-input" type='idcard' name="cardNumber" value="{{userMap.activityNum}}" />
+
+            </view>
+        </view>
+
+
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">衣服尺码</view>
+            </view>
+            <view class="weui-cell__bd">
+                             <input    disabled='true'  class="weui-input" type='text' name="name" value="{{userMap.size}}"  />
+            </view>
+        </view>
+
+
+       
+          
+
+       
+ 
+  </view>
+      <view style="padding:120rpx"></view>
+ 
+  <view class="detail-ft">
+        <button class='detail-btn primary-color-background' catchtap="loadInfo">领物须知</button>
+    </view>

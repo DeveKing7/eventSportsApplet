@@ -1,0 +1,51 @@
+page{
+
+ 
+background-color:rgb(239, 239, 239);
+
+}
+
+.itemView{
+
+margin: 24rpx 24rpx 0 24rpx;
+background-color: white;
+display: flex;
+flex-direction: column;
+  word-break: break-all;
+
+
+}
+.title{
+
+ 
+ line-height: 77rpx;
+ padding-left: 27rpx;
+ font-weight: bold;
+ 
+ background-color:#2578B5;
+ color: white;
+
+ font-size: 32rpx;
+
+}
+.subView{
+
+ color: #4d4d4d;
+ font-size: 28rpx;
+ margin:30rpx 27rpx 30rpx 27rpx;
+ line-height: 50rpx;
+
+}
+.bottomView{
+
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+
+}
+.num{
+
+color: #2578B5;
+
+
+}

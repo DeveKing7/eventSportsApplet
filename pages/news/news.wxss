@@ -1,0 +1,27 @@
+/* pages/news/news.wxss */
+.news-item{
+  display:flex ;
+  flex-direction:row;
+  padding: 16rpx 0rpx;
+}
+.news-title{
+  color: black;
+  font-weight: bold;
+  font-size: 36rpx;
+  line-height: 1;
+  flex: 1;
+
+}
+.news-datetime{
+  color: gray;
+  font-size: 30rpx;
+  line-height: 1;
+ text-align: end
+}
+.text-container{
+  display:flex ;
+  flex-direction:column;
+  flex:1;
+  margin-left: 16rpx;
+  height:140rpx;
+}

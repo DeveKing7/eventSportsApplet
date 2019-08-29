@@ -1,0 +1,8 @@
+<!--pages/newsDetail/newsDetail.wxml-->
+<view class="page-container">
+
+<text class="news-title">xxx马拉松体验季已开始报名</text>
+<text class="news-datetime">2019-08-19 14:20</text>
+<image  mode="aspectFill" src="https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640"></image>
+<rich-text space="nbsp">我是富文本</rich-text>
+</view>

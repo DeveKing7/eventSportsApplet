@@ -1,0 +1,96 @@
+<view class="top-title">{{userMap.groupName?userMap.activityTitle+'('+userMap.groupName+')':userMap.activityTitle}}</view>
+<view class='section-header'>基本信息</view>
+<form class="{{is_detail?'auth':''}}" bindsubmit="submitAuth" report-submit >
+
+    <view class="weui-cells weui-cells_after-title">
+
+ 
+
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">姓名</view>
+            </view>
+            <view class="weui-cell__bd">
+                             <input    disabled='true'  class="weui-input" type='text' name="name" value="{{userMap.name}}"  />
+            </view>
+        </view>
+
+
+        <view wx:if= "{{userMap.groupName}}" class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">分组</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input   disabled='true'   class="weui-input" type='idcard' name="cardNumber" value="{{userMap.groupName}}" />
+
+            </view>
+        </view>
+
+           <view  class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">参赛号</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input   disabled='true'   class="weui-input" type='idcard' name="cardNumber" value="{{userMap.activityNum}}" />
+
+            </view>
+        </view>
+
+           <view  wx:if= "{{userMap.phone}}" class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">手机号</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input   disabled='true'   class="weui-input" type='idcard' name="cardNumber" value="{{userMap.phone}}" />
+
+            </view>
+        </view>
+
+           <view  wx:if= "{{userMap.idCard}}" class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">证件号</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input   disabled='true'   class="weui-input" type='idcard' name="cardNumber" value="{{userMap.idCard}}" />
+
+            </view>
+        </view>
+
+       
+ 
+  </view>
+ <block wx:if="{{userMap.roughScore}}">
+  <view  wx:if="{{scoreRankingList}}" class='section-header'>成绩排名</view>
+ <view class="table" wx:for="{{scoreRankingList}}" wx:key="{{index}}">
+ <view class="table-row" style="{{index==0?'color:rgb(43, 120, 183);':''}}">
+<view class="table-cell">{{item[0]}}</view>
+<view class="table-cell">{{item[1]}}</view>
+<view class="table-cell">{{item[2]}}</view>
+<view class="table-cell">{{item[3]}}</view>
+ 
+</view>
+ </view>
+</block>
+ 
+ <block wx:if="{{segScoreList.length>2}}">
+  <view    class='section-header'>分段成绩</view>
+<view class="table"  wx:for="{{segScoreList}}" wx:key="{{index}}">
+<view class="table-row" style="{{index==0?'color:rgb(43, 120, 183);':''}}">
+<view class="table-cell">{{item.timingPoint}}</view>
+<view class="table-cell">{{item.score}}</view>
+ 
+</view>
+
+
+</view>
+</block>
+
+    <view style="padding:120rpx"></view>
+     <view class="detail-ft">
+        <!-- <button class='detail-btn primary-color-background'  style="background-color:green;" form-type="submit">认领成绩</button>
+ 
+     <view style="padding:20rpx"></view> -->
+ 
+        <button class='detail-btn primary-color-background' form-type="submit">下载证书</button>
+    </view>
+</form>

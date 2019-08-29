@@ -1,0 +1,4 @@
+<view  >
+<image style="width:100%;" mode="widthFix" src="{{url}}" bindtouchstart='timestart' bindtouchend='timeend' bindtap='saveImg'></image>
+</view>
+<view style="width:100%;margin-top:20rpx;font-size:32rpx;text-align:center;">长按保存图片</view>

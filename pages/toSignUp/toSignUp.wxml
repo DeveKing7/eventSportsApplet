@@ -1,0 +1,141 @@
+ 
+
+
+<view class='section-header'>请填写本人的真实信息</view>
+<form class="{{is_detail?'auth':''}}" bindsubmit="submitAuth" report-submit     >
+
+    <view class="weui-cells weui-cells_after-title">
+
+  <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">报名区域</view>
+            </view>
+            <view class="weui-cell__bd">
+              <view wx:if="{{latitude}}" class='location-view' >{{userMap.province}}</view>
+                <view wx:else    ><button class='location-view'  bindtap='onLoad'>点击授权获取位置信息</button></view>
+
+            </view>
+        </view>
+
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">真实姓名</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input wx:if="{{userMap.name&&userMap.name.length>0}}"  disabled='true'   class="weui-input" type='text' name="name" value="{{userMap.name}}" placeholder="请输入您的真实姓名" />
+                             <input wx:else class="weui-input" type='text' name="name" value="{{userMap.name}}" placeholder="请输入您的真实姓名" />
+            </view>
+        </view>
+
+
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">身份证号</view>
+            </view>
+            <view class="weui-cell__bd">
+    
+     <input  wx:if="{{userMap.idCard&&userMap.idCard.length>0}}"  disabled='true'  class="weui-input" type='idcard' name="cardNumber" value="{{userMap.idCard}}" placeholder="请输入您的身份证号" />
+                <input wx:else class="weui-input" type='idcard' name="cardNumber" value="{{userMap.idCard}}" placeholder="请输入您的身份证号" />
+
+            </view>
+        </view>
+
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">手机号码</view>
+            </view>
+            <view class="weui-cell__bd">
+                 <input wx:if="{{userMap.phone&&userMap.phone.length>0}}"  disabled='true' class="weui-input" type='number' name="phone" value="{{userMap.phone}}" placeholder="请输入您的手机号"  bindinput='phoneInput' />
+          
+                <input wx:else class="weui-input" type='number' name="phone" value="{{userMap.phone}}" placeholder="请输入您的手机号"  bindinput='phoneInput' />
+          
+            </view>
+        </view>
+
+        <view  wx:if="{{!userMap.phone||userMap.phone.length<=0}}" class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">验证码</view>
+            </view>
+            <view class="weui-cell__bd">
+
+                <input class="weui-input" type='number' name="code" bindinput='codeInput' bindtap='codeClick' placeholder="请输入验证码" />
+
+            </view>
+
+
+            <view class='code-btn' bindtap='beginSmsTimer' wx:if='{{!smsBtnClicked}}'>获取验证码</view>
+            <view class='code-btn' wx:if='{{smsBtnClicked}}'>{{smsTimerCount}}s 后重试</view>
+        </view>
+
+    </view>
+
+    <view class='section-header'>上传照片</view>
+    <view class='photo-view'>
+     <image wx:if='{{photo.length>0}}' class='photo-img' mode='aspectFill' bindtap='click_photo' src='{{photo[0]}}'></image>
+    <image wx:else class='photo-img' mode='widthFix' bindtap='click_photo' src='/image/general/camera.png'></image>
+    <view class='dec-text'>请上传您的真实照片,否则会取消您的参赛资格（必填）</view>
+   
+    
+    
+    
+    
+    
+    
+    </view>
+      <!-- <view class='section-header'>报名费用</view>
+        <view class='form-pair'>
+            <view>报名费用：</view>
+
+
+            <view class='primary-color'>0.1元</view>
+        </view>
+          <view class='form-pair'>
+            <view>车费费用</view>
+
+
+            <view class='primary-color'>0.1元</view>
+        </view> -->
+
+    <view style="padding:120rpx"></view>
+    <view class="detail-ft">
+        <button class='detail-btn primary-color-background' form-type="submit">确认报名</button>
+    </view>
+</form>
+
+
+ 
+ <view  wx:if="{{is_detail}}" class='background-view'   catchtouchmove='notouch'>
+</view>
+ 
+<view wx:if="{{is_detail}}"  class='scroll-view'   catchtouchmove='notouch' >
+<scroll-view     scroll-y='true' class='scroll'    catchtouchmove='notouch'>
+
+<view class='detail-title'>
+京津冀运动休闲体验季活动须知
+</view>
+<rich-text space="nbsp"  class='detail-text' nodes="1、本次活动名称为京津冀运动休闲体验季，本次活动属于非盈利性质活动，当由于意外事故、动物伤害、暴雨山洪、突发气候变化和急性疾病等不可预测因素造成身体损害时，活动的发起者（下称组委会）和同行者有义务尽力救助，但如果造成了不可逆转的损害，其他参加成员不负担任何责任。<\br>2、参加人员在活动过程中须做到文明参加，自觉维护现场公共秩序，遵守社会公德，不得对他人进行人身攻击，不得违法或者有背于社会公德，并在活动过程中发扬互助友爱的精神，使活动顺利进行。<\br>3、参加人员不可以使用含有反政府、反社会、反人类等不良内容的队名参加。<\br>4、参加人员保证在整个活动过程中不随地抛洒、丢弃垃圾，所有垃圾都要打包带走。爱护自然环境中的一草一木，不随意采摘、破坏植物、不任意践踏、破坏植被。<\br>5、参加人员须自觉遵守所到坐标点的公共秩序及相关规定，不应对所经之处的公共秩序产生不良影响。<\br>6、参加人员系自愿参加本次活动。具有完全行为能力，无患有包括但不限于心脏病、高血压、哮喘、精神病等任何不适宜参与本活动疾病的身体健康人员。若参加人员隐瞒疾病或病史，强行参加活动，后果自负。<\br>7、本次活动可能存在以下危险（警示内容）：因车辆故障或者道路因素导致的人员、车辆损害；因野外活动可能发生因抢劫、自然环境因素导致的人身、财产损失，因野外运动可能导致的人身或财产损失；在活动当中因气候或所处环境引起以及自身突发的身体疾病。以上风险均由参加者自行承担。但京津冀运动休闲体验季组委会为参加人员统一购买了相应的意外伤害保险。对于活动中出现的意外伤害事故，参加人员应立即通知组委会，由组委会向保险机构统一理赔，但组委会无需对参加人员因其故意或过错行为所遭致的伤害承担责任。因参加人员延后通知，导致保险不能理赔的，由参会人员自负一切后果。<\br>8、参加人员须保证所提供的个人信息是真实、准确的，并愿意承担提供信息错误所带来的一切责任和后果。<\br>9、参加活动前，参加人员必须事先与自己的家属沟通，取得家属的理解和支持，同时知道并同意该免责声明。参加人员签名后视作其家属也已知情并同意，否则后果由参加者自负。<\br>10、参加人员在比赛过程中须服从指挥，严格遵守活动规则，在组委会规定的时间、地点集结，注意交通安全，量力而行，不得擅自离队，否则自负其责。<\br>11、参加人员须在阅读并承诺遵守本《活动须知》后报名参加，一旦报名参加则视为其已阅读并承诺遵守本《活动须知》。<\br>12、未尽事宜，另行通知。<\br>13、本报名通知最终解释权归赛事组委会所有。">
+ </rich-text>
+
+ 
+ <view class='agree'> 
+ <image wx:if="{{is_agree==false}}" mode="aspectFill" class='agree_icon' bindtap='click_agree_icon' src='/image/general/BAI-fuxuankuang.png'>
+    </image>
+    <image wx:if="{{is_agree==true}}"  mode="aspectFill" class='agree_icon' bindtap='click_agree_icon' src='/image/general/BAI-fuxuankuangs.png'>
+    </image>
+<view class='agree_text' bindtap='click_agree_icon'>本人已认真阅读并对上述内容承担法律责任</view>
+
+    
+
+
+
+
+
+</view>
+
+</scroll-view>
+
+
+ <view catchtouchmove='notouch'  wx:if="{{is_agree}}"  class='agree_btn' bindtap='click_agree' >确定
+    </view>
+    </view>
+    
